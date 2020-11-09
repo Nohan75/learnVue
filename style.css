@@ -1,0 +1,119 @@
+*, ::before, ::after{
+    margin: 0;padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Lato', sans-serif;
+}
+ul, li, ol{
+    list-style: none;
+}
+a, router-link{
+    text-decoration: none;
+    color: #ffffff;
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+nav .logo{
+    width: 20%;
+    text-align: center;
+}
+nav h1{
+    cursor: pointer;
+    font-size: 35px;
+    color: #ffffff;
+}
+nav ul{
+    display: flex;
+    justify-content: space-around;
+    width: 40%;
+}
+nav ul li{
+    color: #ffffff;
+    font-size: 26px;
+    cursor: pointer;
+    padding: 10px;
+    transition: all 0.3s ease-in-out;
+}
+nav ul li:hover{
+    background-color: #ffffff;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.home-container{
+    width: 90%;
+    margin: 20px auto;
+}
+.card-container{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+}
+.card{
+    margin: 40px;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    background-color: #f1f1f1;
+    border-radius: 15px;
+    filter: drop-shadow(2px 0 4px #000000);
+}
+.card img {
+    border-radius: 15px 15px 0 0;
+}
+.card:hover{
+    transform: scale(1.1);
+}
+
+.card-icons{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 40px;
+}
+
+.fa-heart{
+    font-size: 25px;
+    transition: all 0.3s ease-in-out;
+}
+.fa-shopping-cart{
+    font-size: 25px;
+    cursor: pointer;
+}
+.add-to-cart button{
+    border-style: none;
+}
+.add-to-cart button:focus{
+    outline: none;
+}
+.add-to-cart button:active .fa-shopping-cart{
+    animation: pop 0.3s forwards;
+    color: rgb(45, 187, 45);
+}
+
+input[name="checkbox"]{
+    opacity: 0;
+    position: absolute;
+    cursor: pointer;
+}
+.like-container label{
+    cursor: pointer;
+}
+input[name="checkbox"]:checked + label > .fa-heart{
+    color: #dd091b;
+    animation: pop 0.3s forwards;
+}
+
+@keyframes pop {
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(2);
+    }
+    100%{
+        transform: scale(1);
+    }
+}

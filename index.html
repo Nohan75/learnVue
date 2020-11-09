@@ -1,11 +1,80 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learn VueJS</title>
-</head>
-<body>
-    
-</body>
+    <head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Lato" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Caveat" rel="stylesheet">
+		<link rel="stylesheet" href="./style.css" />
+		<title>LearnVue</title>
+	</head>
+	<body>
+		<div id="app" class="app">
+            <nav>
+                <div class="logo">
+                    <h1>TITLE</h1>
+                </div>
+                <ul>
+                    <li><router-link to="/">Home</router-link></li>
+                    <li><router-link to="/settings">Settings</router-link></li>
+                    <li><router-link to="/contact">Contact</router-link></li>
+                </ul>
+            </nav>
+
+            <router-view></router-view>
+        </div>
+        
+        <script type="text/x-template" id="home">
+            
+            <div class="home-container">
+                <h1>Article</h1>
+
+                <!-- serch part -->
+
+                <input v-model="searchKey" type="search" id="search" placeholder="Rechercher..." autocomplete="off">
+
+                <!-- card part -->
+
+                <div class="card-cart-container">
+                    <div class="card-container">
+                        <div v-for="product in filteredList" class="card">
+                            <div class="img-container">
+                                <img :src="product.img" :alt="product.name">
+                            </div>
+
+                            <div class="card-text">
+                                <h3>{{ product.name }}</h3>
+                                <span>{{ product.price }}€</span>
+                            </div>
+
+                            <div class="card-icons">
+                                <div class="like-container">
+                                    <input 
+                                    type="checkbox"
+                                    name="checkbox"
+                                    :id="product.id"
+                                    />
+                                    <label :for="product.id">
+                                        <i class="fas fa-heart"></i>
+                                    </label>
+                                </div>
+                                <div class="add-to-cart">
+                                    <button>
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+        <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+        <script src="./vue.js"></script>
+    </body>
 </html>
