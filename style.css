@@ -53,6 +53,10 @@ nav ul li:hover{
     flex-wrap: wrap;
     align-content: center;
 }
+.search-div{
+    display: flex;
+    align-items: center;
+}
 .card{
     margin: 40px;
     text-align: center;
@@ -88,9 +92,22 @@ nav ul li:hover{
 .add-to-cart button:focus{
     outline: none;
 }
-.add-to-cart button:active .fa-shopping-cart{
-    animation: pop 0.3s forwards;
-    color: rgb(45, 187, 45);
+.add-to-cart button:focus .fa-shopping-cart{
+    color: rgb(47, 255, 47);
+    animation: popCart 0.3s forwards;
+}
+
+input[type="search"]{
+    margin-right: 15px;
+    border-radius: 40px;
+    border-style: none;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    height: 30px;
+    width: 200px;
+    padding: 5px;
+}
+input[type="search"]:focus{
+    outline: none;
 }
 
 input[name="checkbox"]{
@@ -107,6 +124,17 @@ input[name="checkbox"]:checked + label > .fa-heart{
 }
 
 @keyframes pop {
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(2);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+@keyframes popCart {
     0%{
         transform: scale(1);
     }

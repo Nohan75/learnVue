@@ -14,10 +14,10 @@
 		<div id="app" class="app">
             <nav>
                 <div class="logo">
-                    <h1>TITLE</h1>
+                    <h1><router-link to="/">TITLE</router-link></h1>
                 </div>
                 <ul>
-                    <li><router-link to="/">Home</router-link></li>
+                    <li><router-link to="/shop">Shop</router-link></li>
                     <li><router-link to="/settings">Settings</router-link></li>
                     <li><router-link to="/contact">Contact</router-link></li>
                 </ul>
@@ -26,14 +26,18 @@
             <router-view></router-view>
         </div>
         
-        <script type="text/x-template" id="home">
+        <script type="text/x-template" id="shop">
             
             <div class="home-container">
                 <h1>Article</h1>
 
                 <!-- serch part -->
 
-                <input v-model="searchKey" type="search" id="search" placeholder="Rechercher..." autocomplete="off">
+                <div class="search-div">
+                    <input v-model="searchKey" type="search" id="search" placeholder="Rechercher..." autocomplete="off">
+                    <p v-if="filteredList.length < 2">{{ filteredList.length }} résultat trouvé</p>
+                    <p v-else>{{ filteredList.length }} résultats trouvés</p>
+                </div>
 
                 <!-- card part -->
 
