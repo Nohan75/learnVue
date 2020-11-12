@@ -78,6 +78,20 @@ nav ul li:hover{
     padding: 10px 40px;
 }
 
+a .fa-heart{
+    position: relative;
+    font-size: 35px;
+}
+a .fa-heart span{
+    display: inline-block;
+    background-color: rgb(224, 16, 44);
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    position: absolute;
+    right: -3px;
+}
+
 .fa-heart{
     font-size: 25px;
     transition: all 0.3s ease-in-out;
@@ -144,4 +158,81 @@ input[name="checkbox"]:checked + label > .fa-heart{
     100%{
         transform: scale(1);
     }
+}
+.card-cart-container{
+    display: flex;
+}
+
+/* Shopping Cart */
+.shopping-cart{
+    background-color: #f1f1f1;
+    width: 70%;
+    height: auto;
+    padding: 15px;
+    border-radius: 20px;
+    filter: drop-shadow(2px 0 4px #000000);
+    text-align: center;
+}
+
+.item{
+    position: relative;
+    border-top: 2px solid rgba(0, 0, 0, 0.8);
+    margin: 20px 0;
+    padding-top: 10px;
+}
+.item .img-container{
+    position: absolute;
+    left: -35px;
+    
+}
+.item .img-container img{
+    width: 30%;
+    height: auto;
+    border-radius: 50%;
+}
+.cart-icons button{
+    border: none;
+    cursor: pointer;
+    outline: none;
+    width: 30px;
+    height: 30px;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    border-radius: 50%;
+    animation: flip 1s ease;
+    transition: all 0.3s ease;
+}
+.cart-icons button:first-child{
+    animation-delay: 0s;
+}
+.cart-icons button:nth-child(2){
+    animation-delay: 0.2s;
+}
+.cart-icons button:last-child{
+    animation-delay: 0.4s;
+}
+.cart-icons button:hover{
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #f1f1f1;
+}
+.cart-icons button:focus {
+    animation: pop 0.4s ease;
+}
+
+@keyframes flip {
+    100%{
+        transform: rotateX(360deg);
+    }
+}
+
+.grand-total{
+    display: flex;
+    flex-direction: column;
+}
+
+.grand-total .total {
+    display: flex;
+    justify-content: space-between;
+}
+.grand-total .total-item-amount{
+    text-align: left;
 }

@@ -22,7 +22,9 @@ const Shop = {
     data: () => {
         return {
             products,
-            searchKey: ''
+            searchKey: '',
+            liked: [],
+            cart: []
         }
     },
     computed: {
@@ -31,6 +33,66 @@ const Shop = {
                 return product.name.toLowerCase().includes(this.searchKey.toLowerCase())
             })
         },
+        getLikeCookie() {
+            let cookieValue = JSON.parse($cookies.get('like'));
+            cookieValue == null ? this.liked = [] : this.liked = cookieValue;
+        },
+        cartTotalAmount() {
+            let total = 0;
+            for(let item in this.cart){
+                total = total + (this.cart[item].quantity * this.cart[item].price)
+            }
+            return total;
+        },
+        itemTotalAmount() {
+            let totalAmout = 0;
+            for(let item in this.cart){
+                totalAmout = totalAmout + (this.cart[item].quantity);
+            }
+            return totalAmout;
+        }
+    },
+    methods: {
+        setLikeCookie() {
+            document.addEventListener('input', () => {
+                setTimeout(() => {
+                    $cookies.set('like', JSON.stringify(this.liked));
+                }, 300);
+                
+            });
+        },
+        addToCart(product){
+            for(let i = 0; i < this.cart.length; i++){
+                if(this.cart[i].id === product.id){
+                    return this.cart[i].quantity++;
+                }
+            }
+            this.cart.push({
+                id: product.id,
+                categ: product.categ,
+                name: product.name,
+                price: product.price,
+                img: product.img,
+                quantity: 1
+            });
+        },
+        cartPlusOne(product){
+            product.quantity += 1;
+        },
+        cartRemoveItem(id){
+            this.$delete(this.cart, id);
+        },
+        cartMinusOne(product, id){
+            if(product.quantity === 1){
+                this.cartRemoveItem(id);
+            } else {
+                product.quantity -= 1;
+            }
+            
+        }
+    },
+    mounted: () => {
+        this.getLikeCookie;
     }
 }
 const Settings = {
